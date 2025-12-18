@@ -46,7 +46,6 @@ namespace MacroChain {
             CommandManager.RemoveHandler("/runmacro");
             macroCallHook?.Disable();
             macroCallHook?.Dispose();
-            macroCallHook = null;
             Framework.Update -= FrameworkUpdate;
         }
 
@@ -104,7 +103,6 @@ namespace MacroChain {
 
         public void FrameworkUpdate(IFramework framework) {
             if (lastExecutedMacro == null) return;
-            if (ClientState == null) return;
             if (!ClientState.IsLoggedIn) {
                 lastExecutedMacro = null;
                 paddingStopwatch.Stop();
